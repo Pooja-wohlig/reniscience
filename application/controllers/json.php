@@ -9,49 +9,42 @@ $elements[0]->sort="1";
 $elements[0]->header="ID";
 $elements[0]->alias="id";
 
-$elements=array();
 $elements[1]=new stdClass();
 $elements[1]->field="`reniscience_story`.`title`";
 $elements[1]->sort="1";
 $elements[1]->header="Title";
 $elements[1]->alias="title";
 
-$elements=array();
 $elements[2]=new stdClass();
 $elements[2]->field="`reniscience_story`.`content`";
 $elements[2]->sort="1";
 $elements[2]->header="Content";
 $elements[2]->alias="content";
 
-$elements=array();
 $elements[3]=new stdClass();
 $elements[3]->field="`reniscience_story`.`numberofimage`";
 $elements[3]->sort="1";
 $elements[3]->header="Number of image";
 $elements[3]->alias="numberofimage";
 
-$elements=array();
 $elements[4]=new stdClass();
 $elements[4]->field="`reniscience_story`.`image1`";
 $elements[4]->sort="1";
 $elements[4]->header="Image1";
 $elements[4]->alias="image1";
 
-$elements=array();
 $elements[5]=new stdClass();
 $elements[5]->field="`reniscience_story`.`image2`";
 $elements[5]->sort="1";
 $elements[5]->header="Image2";
 $elements[5]->alias="image2";
 
-$elements=array();
 $elements[6]=new stdClass();
 $elements[6]->field="`reniscience_story`.`status`";
 $elements[6]->sort="1";
 $elements[6]->header="Status";
 $elements[6]->alias="status";
 
-$elements=array();
 $elements[7]=new stdClass();
 $elements[7]->field="`reniscience_story`.`timestamp`";
 $elements[7]->sort="1";
