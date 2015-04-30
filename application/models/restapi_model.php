@@ -9,7 +9,22 @@ $query['story']=$this->db->query("SELECT `id`,`title`,`content`,`numberofimage`,
 		return $query;
 }
 	public function getallstories(){
-	$query['allstories']=$this->db->query("SELECT `id`,`title`,`content`,`numberofimage`,`image1`,`image2`,`status` FROM `reniscience_story`")->result();
+	$query=$this->db->query("SELECT `id`,`title`,`content`,`numberofimage`,`image1`,`image2`,`status` FROM `reniscience_story`")->result();
+		
+		 foreach($query AS $row)
+        {
+            $row->images=$this->db->query("SELECT `storyid`,`image` FROM `reniscience_storyimage` WHERE `storyid`='$row->id'");
+			 if($row->images->num_rows()>0)
+			 {
+				 $row->images=$row->images->result();
+			 }
+			 else
+			 {
+				 $row->images=array();
+			 }
+		 }
+		return $query;
+        
 	}
 
 }
