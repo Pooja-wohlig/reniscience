@@ -13,14 +13,20 @@ $query['story']=$this->db->query("SELECT `id`,`title`,`content`,`numberofimage`,
 		
 		 foreach($query AS $row)
         {
-            $row->images=$this->db->query("SELECT `storyid`,`image` FROM `reniscience_storyimage` WHERE `storyid`='$row->id'");
-			 if($row->images->num_rows()>0)
+             $row->images=array();
+             $images=$this->db->query("SELECT `image` FROM `reniscience_storyimage` WHERE `storyid`='$row->id'");
+			 if($images->num_rows()>0)
 			 {
-				 $row->images=$row->images->result();
-			 }
-			 else
-			 {
-				 $row->images=array();
+                 $images=$images->result();
+                 foreach($images as $image)
+                 {
+                     //print_r($image);
+                     if($image->image!="")
+                     {
+                        array_push($row->images,$image->image);
+                     }
+                 }
+				 
 			 }
 		 }
 		return $query;
