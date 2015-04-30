@@ -137,4 +137,8 @@ $this->load->view("json",$data);
 $data["message"]=$this->restapi_model->getstories($storyid);
 $this->load->view("json",$data);
  }
+ public function getallstories(){
+ $data["message"]=$this->restapi_model->getallstories();
+$this->load->view("json",$data);
+ }
 } ?>

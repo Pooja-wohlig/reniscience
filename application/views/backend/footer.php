@@ -49,6 +49,15 @@
 											</span>
 										</a>
 									</li>
+									<li class="active-link">
+										<a href="<?php echo site_url('site/viewcategory');?>">
+											<i class="fa fa-stories"></i>
+											<span class="menu-title">
+												<strong>Categories</strong>
+												<span class="label label-success pull-right">Top</span>
+											</span>
+										</a>
+									</li>
 								
 						
 									<!--Menu list item-->

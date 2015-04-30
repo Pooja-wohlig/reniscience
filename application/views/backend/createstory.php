@@ -42,6 +42,12 @@
 								<input type="file" id="normal-field" class="form-control" name="image2" value='<?php echo set_value(' image2 ');?>'>
 							</div>
 						</div>
+					<div class=" form-group">
+							<label class="col-sm-2 control-label" for="normal-field">Category</label>
+							<div class="col-sm-4">
+								<?php echo form_dropdown( "category[]",$category,set_value( 'category'), 'id="select3" class="chzn-select form-control" 	data-placeholder="Choose an Genre..." multiple');?>
+							</div>
+						</div>
 						<div class=" form-group">
 							<label class="col-sm-2 control-label" for="normal-field">Status</label>
 							<div class="col-sm-4">

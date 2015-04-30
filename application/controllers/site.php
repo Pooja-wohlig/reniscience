@@ -394,6 +394,12 @@ $elements[7]->field="`reniscience_story`.`timestamp`";
 $elements[7]->sort="1";
 $elements[7]->header="Timestamp";
 $elements[7]->alias="timestamp";
+	
+//$elements[8]=new stdClass();
+//$elements[8]->field="`reniscience_category`.`category`";
+//$elements[8]->sort="1";
+//$elements[8]->header="Category";
+//$elements[8]->alias="category";
 $search=$this->input->get_post("search");
 $pageno=$this->input->get_post("pageno");
 $orderby=$this->input->get_post("orderby");
@@ -418,6 +424,7 @@ $access=array("1");
 $this->checkaccess($access);
 $data["page"]="createstory";
 	$data[ 'status' ] =$this->user_model->getstatusdropdown();
+	$data[ 'category' ] =$this->category_model->getcategorydropdown();
 	$data[ 'numberofimage' ] =$this->story_model->getnumberofimagedropdown();
 $data["title"]="Create story";
 $this->load->view("template",$data);
@@ -438,6 +445,7 @@ if($this->form_validation->run()==FALSE)
 $data["alerterror"]=validation_errors();
 	$data[ 'status' ] =$this->user_model->getstatusdropdown();
 	$data[ 'numberofimage' ] =$this->story_model->getnumberofimagedropdown();
+	$data[ 'category' ] =$this->category_model->getcategorydropdown();
 $data["page"]="createstory";
 $data["title"]="Create story";
 $this->load->view("template",$data);
@@ -447,6 +455,7 @@ else
 $title=$this->input->get_post("title");
 $content=$this->input->get_post("content");
 $numberofimage=$this->input->get_post("numberofimage");
+$category=$this->input->get_post("category");
 $image1=$this->input->get_post("image1");
 $image2=$this->input->get_post("image2");
 $status=$this->input->get_post("status");
@@ -517,7 +526,7 @@ $timestamp=$this->input->get_post("timestamp");
                 
 			}
             
-if($this->story_model->create($title,$content,$numberofimage,$image1,$image2,$status,$timestamp)==0)
+if($this->story_model->create($title,$content,$numberofimage,$image1,$image2,$status,$timestamp,$category)==0)
 $data["alerterror"]="New story could not be created.";
 else
 $data["alertsuccess"]="story created Successfully.";
@@ -532,6 +541,9 @@ $this->checkaccess($access);
 $data["page"]="editstory";
 	$data[ 'status' ] =$this->user_model->getstatusdropdown();
 	$data[ 'numberofimage' ] =$this->story_model->getnumberofimagedropdown();
+	$data[ 'category' ] =$this->category_model->getcategorydropdown();
+	 $data['selectedcategory']=$this->story_model->getcategorybystory($this->input->get_post('id'));
+	$selectedcategory=$data['selectedcategory'];
 $data["page2"]="block/userblock";
 $data["title"]="Edit story";
 $data["before"]=$this->story_model->beforeedit($this->input->get("id"));
@@ -553,6 +565,8 @@ if($this->form_validation->run()==FALSE)
 {
 $data["alerterror"]=validation_errors();
 	$data[ 'status' ] =$this->user_model->getstatusdropdown();
+	$data[ 'category' ] =$this->category_model->getcategorydropdown();
+	 $data['selectedcategory']=$this->story_model->getcategorybystory($this->input->get_post('id'));
 $data["page"]="editstory";
 $data["title"]="Edit story";
 $data["before"]=$this->story_model->beforeedit($this->input->get("id"));
@@ -564,6 +578,7 @@ $id=$this->input->get_post("id");
 $title=$this->input->get_post("title");
 $content=$this->input->get_post("content");
 $numberofimage=$this->input->get_post("numberofimage");
+$category=$this->input->get_post("category");
 $image1=$this->input->get_post("image1");
 $image2=$this->input->get_post("image2");
 $status=$this->input->get_post("status");
@@ -607,7 +622,7 @@ $timestamp=$this->input->get_post("timestamp");
             {
             $image1=$this->story_model->getstoryimagebyid1($id);
                // print_r($image);
-                $image1=$image1->image;
+                $image1=$image1->image1;
             }
 	
 			$filename="image2";
@@ -646,9 +661,9 @@ $timestamp=$this->input->get_post("timestamp");
             {
             $image2=$this->story_model->getstoryimagebyid2($id);
                // print_r($image);
-                $image2=$image2->image;
+                $image2=$image2->image2;
             }
-if($this->story_model->edit($id,$title,$content,$numberofimage,$image1,$image2,$status,$timestamp)==0)
+if($this->story_model->edit($id,$title,$content,$numberofimage,$image1,$image2,$status,$timestamp,$category)==0)
 $data["alerterror"]="New story could not be Updated.";
 else
 $data["alertsuccess"]="story Updated Successfully.";
@@ -891,6 +906,131 @@ $this->storyimage_model->delete($this->input->get("id"));
 $data["redirect"]="site/viewstoryimage";
 $this->load->view("redirect",$data);
 }
+	
+	
+	
+// category
+	
+	
+	
+	
+	
+public function viewcategory()
+{
+$access=array("1");
+$this->checkaccess($access);
+$data["page"]="viewcategory";
+$data["base_url"]=site_url("site/viewcategoryjson");
+$data["title"]="View category";
+$this->load->view("template",$data);
+}
+function viewcategoryjson()
+{
+$elements=array();
+$elements[0]=new stdClass();
+$elements[0]->field="`reniscience_category`.`id`";
+$elements[0]->sort="1";
+$elements[0]->header="ID";
+$elements[0]->alias="id";
+	
+$elements[1]=new stdClass();
+$elements[1]->field="`reniscience_category`.`name`";
+$elements[1]->sort="1";
+$elements[1]->header="Name";
+$elements[1]->alias="name";
+	
+$search=$this->input->get_post("search");
+$pageno=$this->input->get_post("pageno");
+$orderby=$this->input->get_post("orderby");
+$orderorder=$this->input->get_post("orderorder");
+$maxrow=$this->input->get_post("maxrow");
+if($maxrow=="")
+{
+$maxrow=20;
+}
+if($orderby=="")
+{
+$orderby="id";
+$orderorder="ASC";
+}
+$data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `reniscience_category`");
+$this->load->view("json",$data);
+}
 
+public function createcategory()
+{
+$access=array("1");
+$this->checkaccess($access);
+$data["page"]="createcategory";
+$data["title"]="Create category";
+$this->load->view("template",$data);
+}
+public function createcategorysubmit() 
+{
+$access=array("1");
+$this->checkaccess($access);
+$this->form_validation->set_rules("name","Name","trim");
+if($this->form_validation->run()==FALSE)
+{
+$data["alerterror"]=validation_errors();
+$data["page"]="createcategory";
+$data["title"]="Create category";
+$this->load->view("template",$data);
+}
+else
+{
+$name=$this->input->get_post("name");
+if($this->category_model->create($name)==0)
+$data["alerterror"]="New category could not be created.";
+else
+$data["alertsuccess"]="category created Successfully.";
+$data["redirect"]="site/viewcategory";
+$this->load->view("redirect",$data);
+}
+}
+public function editcategory()
+{
+$access=array("1");
+$this->checkaccess($access);
+$data["page"]="editcategory";
+$data["title"]="Edit category";
+$data["before"]=$this->category_model->beforeedit($this->input->get("id"));
+$this->load->view("template",$data);
+}
+public function editcategorysubmit()
+{
+$access=array("1");
+$this->checkaccess($access);
+$this->form_validation->set_rules("id","ID","trim");
+$this->form_validation->set_rules("name","Name","trim");
+if($this->form_validation->run()==FALSE)
+{
+$data["alerterror"]=validation_errors();
+$data["page"]="editcategory";
+$data["title"]="Edit category";
+$data["before"]=$this->category_model->beforeedit($this->input->get("id"));
+$this->load->view("template",$data);
+}
+else
+{
+$id=$this->input->get_post("id");
+$name=$this->input->get_post("name");
+if($this->category_model->edit($id,$name)==0)
+$data["alerterror"]="New category could not be Updated.";
+else
+$data["alertsuccess"]="category Updated Successfully.";
+$data["redirect"]="site/viewcategory";
+$this->load->view("redirect",$data);
+}
+}
+public function deletecategory()
+{
+$access=array("1");
+$this->checkaccess($access);
+$this->category_model->delete($this->input->get("id"));
+$data["redirect"]="site/viewcategory";
+$this->load->view("redirect",$data);
+}
+	
 }
 ?>
