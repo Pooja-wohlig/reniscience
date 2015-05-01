@@ -13,7 +13,7 @@
 						<thead>
 						<tr>
 							<th data-field="id">ID</th>
-							<th data-field="storyid">Story id</th>
+							<th data-field="storyid">Story</th>
 							<th data-field="order">Order</th>
 							<th data-field="image">image</th>
 							<th data-field="status">Status</th>

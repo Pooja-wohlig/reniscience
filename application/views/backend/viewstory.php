@@ -15,11 +15,11 @@
 						<tr>
 							<th data-field="id">ID</th>
 							<th data-field="title">Title</th>
-							<th data-field="content">Content</th>
+<!--							<th data-field="content">Content</th>-->
 							<th data-field="numberofimage">Number of image</th>
 							<th data-field="image1">Image1</th>
 							<th data-field="image2">Image2</th>
-							<th data-field="status">Status</th>
+							<th data-field="status">Category</th>
 							<th data-field="timestamp">Timestamp</th>
 						</tr>
 					</thead>
@@ -31,7 +31,7 @@
 		</section>
 		<script>
 			function drawtable(resultrow) {
-				return "<tr><td>" + resultrow.id + "</td><td>" + resultrow.title + "</td><td>" + resultrow.content + "</td><td>" + resultrow.numberofimage + "</td><td>" + resultrow.image1 + "</td><td>" + resultrow.image2 + "</td><td>" + resultrow.status + "</td><td>" + resultrow.timestamp + "</td><td><a class='btn btn-primary btn-xs' href='<?php echo site_url('site/editstory?id=');?>" + resultrow.id + "'><i class='icon-pencil'></i></a><a class='btn btn-danger btn-xs' href='<?php echo site_url('site/deletestory?id='); ?>" + resultrow.id + "'><i class='icon-trash '></i></a></td></tr>";
+				return "<tr><td>" + resultrow.id + "</td><td>" + resultrow.title + "</td><td>" + resultrow.numberofimage + "</td><td>" + resultrow.image1 + "</td><td>" + resultrow.image2 + "</td><td>" + resultrow.status + "</td><td>" + resultrow.timestamp + "</td><td><a class='btn btn-primary btn-xs' href='<?php echo site_url('site/editstory?id=');?>" + resultrow.id + "'><i class='icon-pencil'></i></a><a class='btn btn-danger btn-xs' href='<?php echo site_url('site/deletestory?id='); ?>" + resultrow.id + "'><i class='icon-trash '></i></a></td></tr>";
 			}
 			generatejquery("<?php echo $base_url;?>");
 		</script>

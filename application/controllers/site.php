@@ -387,7 +387,7 @@ $elements[5]->alias="image2";
 $elements[6]=new stdClass();
 $elements[6]->field="`reniscience_story`.`status`";
 $elements[6]->sort="1";
-$elements[6]->header="Status";
+$elements[6]->header="Category";
 $elements[6]->alias="status";
 $elements[7]=new stdClass();
 $elements[7]->field="`reniscience_story`.`timestamp`";
@@ -685,13 +685,16 @@ $access=array("1");
 $this->checkaccess($access);
 $data["page"]="viewstoryimage";
 $data["page2"]="block/userblock";
-	$data['before']=$this->story_model->beforeedit($this->input->get('id'));
-$data["base_url"]=site_url("site/viewstoryimagejson");
+$data['story']=$this->input->get('id');
+$data['before']=$this->story_model->beforeedit($this->input->get('id'));
+$story=$this->input->get('id');
+$data["base_url"]=site_url("site/viewstoryimagejson?id=".$story);
 $data["title"]="View storyimage";
 $this->load->view("templatewith2",$data);
 }
 function viewstoryimagejson()
 {
+$story=$this->input->get("id");
 $elements=array();
 $elements[0]=new stdClass();
 $elements[0]->field="`reniscience_storyimage`.`id`";
@@ -699,9 +702,9 @@ $elements[0]->sort="1";
 $elements[0]->header="ID";
 $elements[0]->alias="id";
 $elements[1]=new stdClass();
-$elements[1]->field="`reniscience_storyimage`.`storyid`";
+$elements[1]->field="`reniscience_story`.`title`";
 $elements[1]->sort="1";
-$elements[1]->header="Story id";
+$elements[1]->header="Story";
 $elements[1]->alias="storyid";
 $elements[2]=new stdClass();
 $elements[2]->field="`reniscience_storyimage`.`order`";
@@ -732,7 +735,7 @@ if($orderby=="")
 $orderby="id";
 $orderorder="ASC";
 }
-$data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `reniscience_storyimage`");
+$data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `reniscience_storyimage` LEFT OUTER JOIN 	`reniscience_story` ON `reniscience_story`.`id`=`reniscience_storyimage`.`storyid`","WHERE `storyid`='$story'");
 $this->load->view("json",$data);
 }
 
