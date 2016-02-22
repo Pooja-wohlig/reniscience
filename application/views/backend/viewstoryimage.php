@@ -27,7 +27,7 @@
 		</section>
 		<script>
 			function drawtable(resultrow) {
-				return "<tr><td>" + resultrow.id + "</td><td>" + resultrow.storyid + "</td><td>" + resultrow.order + "</td><td>" + resultrow.image + "</td><td>" + resultrow.status + "</td><td><a class='btn btn-primary btn-xs' href='<?php echo site_url('site/editstoryimage?id=');?>" + resultrow.id + "'><i class='icon-pencil'></i></a><a class='btn btn-danger btn-xs' href='<?php echo site_url('site/deletestoryimage?id='); ?>" + resultrow.id + "'><i class='icon-trash '></i></a></td></tr>";
+				return "<tr><td>" + resultrow.id + "</td><td>" + resultrow.storyid + "</td><td>" + resultrow.order + "</td><td>" + resultrow.image + "</td><td>" + resultrow.status + "</td><td><a class='btn btn-primary btn-xs' href='<?php echo site_url('site/editstoryimage?id=');?>" + resultrow.id + "&storyid="+resultrow.sid+"'><i class='icon-pencil'></i></a><a class='btn btn-danger btn-xs' href='<?php echo site_url('site/deletestoryimage?id='); ?>" + resultrow.id + "&storyid="+resultrow.sid+"'><i class='icon-trash '></i></a></td></tr>";
 			}
 			generatejquery("<?php echo $base_url;?>");
 		</script>

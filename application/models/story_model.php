@@ -27,7 +27,7 @@ $story=$this->db->insert_id();
 	else
 	return  $story;
     }
-	
+
     public function createcategory($story,$category)
 	{
 		$data  = array(
@@ -37,8 +37,8 @@ $story=$this->db->insert_id();
 		$query=$this->db->insert( 'reniscience_storycategory', $data );
 //		return  1;
 	}
-	
-	
+
+
 public function beforeedit($id)
 {
 $this->db->where("id",$id);
@@ -63,7 +63,7 @@ $query=$this->db->update( "reniscience_story", $data );
         }
 return 1;
 }
-	
+
 //	   public function edit($id,$name,$duration,$dateofrelease,$rating,$director,$writer,$casteandcrew,$summary,$twittertrack,$trailer,$isfeatured,$isintheator,$iscommingsoon,$genre,$image)
 //    {
 //        $data=array("name" => $name,"duration" => $duration,"dateofrelease" => $dateofrelease,"rating" => $rating,"director" => $director,"writer" => $writer,"casteandcrew" => $casteandcrew,"summary" => $summary,"twittertrack" => $twittertrack,"trailer" => $trailer,"isfeatured" => $isfeatured,"isintheator" => $isintheator,"iscommingsoon" => $iscommingsoon,"image" => $image);
@@ -76,7 +76,7 @@ return 1;
 //        }
 //        return 1;
 //    }
-	   
+
 	public function getstoryimagebyid1($id)
 	{
 		$query=$this->db->query("SELECT `image1` FROM `reniscience_story` WHERE `id`='$id'")->row();
@@ -100,7 +100,7 @@ $query=$this->db->query("SELECT * FROM `numberofimage`  ORDER BY `id` ASC")->res
 		{
 			$return[$row->id]=$row->name;
 		}
-		
+
 		return $return;
 	}
 	public function getstorydropdown(){
@@ -111,7 +111,7 @@ $query=$this->db->query("SELECT * FROM `reniscience_story`  ORDER BY `id` ASC")-
 		{
 			$return[$row->id]=$row->title;
 		}
-		
+
 		return $return;
 	}
 	  public function getcategorybystoryold($id)
@@ -129,7 +129,7 @@ $query=$this->db->query("SELECT * FROM `reniscience_story`  ORDER BY `id` ASC")-
          return $return;
 	}
 
-	
+
      public function getcategorybystory($id)
 	{
 //         echo "Hello";

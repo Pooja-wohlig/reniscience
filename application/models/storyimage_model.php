@@ -26,7 +26,9 @@ return $query;
 }
 public function edit($id,$storyid,$order,$image,$status)
 {
-$data=array("storyid" => $storyid,"order" => $order,"image" => $image,"status" => $status);
+$data=array("storyid" => $storyid,"order" => $order,"status" => $status);
+if($image != "")
+  $data['image']=$image;
 $this->db->where( "id", $id );
 $query=$this->db->update( "reniscience_storyimage", $data );
 return 1;
