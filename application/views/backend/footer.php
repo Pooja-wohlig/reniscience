@@ -35,16 +35,25 @@
 						<div class="nano">
 							<div class="nano-content">
 								<ul id="mainnav-menu" class="list-group">
-						
+
 									<!--Category name-->
 <!--									<li class="list-header">Navigation</li>-->
-						
+
 									<!--Menu list item-->
 									<li class="active-link">
 										<a href="<?php echo site_url('site/index');?>">
 											<i class="fa fa-stories"></i>
 											<span class="menu-title">
 												<strong>Stories</strong>
+<!--												<span class="label label-success pull-right">Top</span>-->
+											</span>
+										</a>
+									</li>
+									<li class="active-link">
+										<a href="<?php echo site_url('site/viewcategory');?>">
+											<i class="fa fa-stories"></i>
+											<span class="menu-title">
+												<strong>Category</strong>
 <!--												<span class="label label-success pull-right">Top</span>-->
 											</span>
 										</a>
@@ -60,8 +69,8 @@
 										</a>
 									</li>
 -->
-								
-						
+
+
 									<!--Menu list item-->
 <!--
 									<li>
@@ -72,7 +81,7 @@
 											</span>
 											<i class="arrow"></i>
 										</a>
-						
+
 										Submenu
 										<ul class="collapse">
 											<li><a href="layouts-collapsed-navigation.html">Collapsed Navigation</a></li>
@@ -86,11 +95,11 @@
 											<li class="list-divider"></li>
 											<li><a href="layouts-fixed-navbar.html">Fixed Navbar</a></li>
 											<li><a href="layouts-fixed-footer.html">Fixed Footer</a></li>
-											
+
 										</ul>
 									</li>
 -->
-						
+
 									<!--Menu list item-->
 <!--
 									<li>
@@ -103,12 +112,12 @@
 										</a>
 									</li>
 -->
-						
+
 <!--									<li class="list-divider"></li>-->
-						
+
 									<!--Category name-->
 <!--									<li class="list-header">Components</li>-->
-						
+
 									<!--Menu list item-->
 <!--
 									<li>
@@ -118,7 +127,7 @@
 											<i class="arrow"></i>
 										</a>
 -->
-						
+
 										<!--Submenu-->
 <!--
 										<ul class="collapse">
@@ -133,11 +142,11 @@
 											<li><a href="ui-tabs-accordions.html">Tabs &amp; Accordions</a></li>
 											<li><a href="ui-alerts-tooltips.html">Alerts &amp; Tooltips</a></li>
 											<li><a href="ui-helper-classes.html">Helper Classes</a></li>
-											
+
 										</ul>
 									</li>
 -->
-						
+
 									<!--Menu list item-->
 <!--
 									<li>
@@ -146,18 +155,18 @@
 											<span class="menu-title">Forms</span>
 											<i class="arrow"></i>
 										</a>
-						
+
 										Submenu
 										<ul class="collapse">
 											<li><a href="forms-general.html">General</a></li>
 											<li><a href="forms-components.html">Components</a></li>
 											<li><a href="forms-validation.html">Validation</a></li>
 											<li><a href="forms-wizard.html">Wizard</a></li>
-											
+
 										</ul>
 									</li>
 -->
-						
+
 									<!--Menu list item-->
 <!--
 									<li>
@@ -166,18 +175,18 @@
 											<span class="menu-title">Tables</span>
 											<i class="arrow"></i>
 										</a>
-						
+
 										Submenu
 										<ul class="collapse">
 											<li><a href="tables-static.html">Static Tables</a></li>
 											<li><a href="tables-bootstrap.html">Bootstrap Tables</a></li>
 											<li><a href="tables-datatable.html">Data Tables<span class="label label-info pull-right">New</span></a></li>
 											<li><a href="tables-footable.html">Foo Tables<span class="label label-info pull-right">New</span></a></li>
-											
+
 										</ul>
 									</li>
 -->
-						
+
 									<!--Menu list item-->
 <!--
 									<li>
@@ -187,12 +196,12 @@
 										</a>
 									</li>
 -->
-						
+
 <!--									<li class="list-divider"></li>-->
-						
+
 									<!--Category name-->
 <!--									<li class="list-header">Extra</li>-->
-						
+
 									<!--Menu list item-->
 <!--
 									<li>
@@ -204,17 +213,17 @@
 											</span>
 										</a>
 -->
-						
+
 <!--
 										Submenu
 										<ul class="collapse">
 											<li><a href="misc-calendar.html">Calendar</a></li>
 											<li><a href="misc-maps.html">Google Maps</a></li>
-											
+
 										</ul>
 -->
 <!--									</li>-->
-						
+
 									<!--Menu list item-->
 <!--
 									<li>
@@ -223,17 +232,17 @@
 											<span class="menu-title">Email</span>
 											<i class="arrow"></i>
 										</a>
-						
+
 										Submenu
 										<ul class="collapse">
 											<li><a href="mailbox.html">Inbox</a></li>
 											<li><a href="mailbox-message.html">View Message</a></li>
 											<li><a href="mailbox-compose.html">Compose Message</a></li>
-											
+
 										</ul>
 									</li>
 -->
-						
+
 									<!--Menu list item-->
 <!--
 									<li>
@@ -242,7 +251,7 @@
 											<span class="menu-title">Pages</span>
 											<i class="arrow"></i>
 										</a>
-						
+
 										Submenu
 										<ul class="collapse">
 											<li><a href="pages-blank.html">Blank Page</a></li>
@@ -258,7 +267,7 @@
 											<li><a href="pages-register.html">Register</a></li>
 											<li><a href="pages-password-reminder.html">Password Reminder</a></li>
 											<li><a href="pages-lock-screen.html">Lock Screen</a></li>
-											
+
 										</ul>
 									</li>
 -->
@@ -367,14 +376,14 @@
 			</nav>
 			<!--===================================================-->
 			<!--END MAIN NAVIGATION-->
-			
+
 			<!--ASIDE-->
 			<!--===================================================-->
 			<aside id="aside-container">
 				<div id="aside">
 					<div class="nano">
 						<div class="nano-content">
-							
+
 							<!--Nav tabs-->
 							<!--================================-->
 							<ul class="nav nav-tabs nav-justified">
@@ -657,7 +666,7 @@
 
 		</div>
 
-		
+
 
 		<!-- FOOTER -->
 		<!--===================================================-->
@@ -719,8 +728,8 @@
 	<!-- END OF CONTAINER -->
 
 
-	
-	
+
+
 	<!-- SETTINGS - DEMO PURPOSE ONLY -->
 	<!--===================================================-->
 	<div id="demo-set" class="demo-set">
@@ -999,7 +1008,7 @@
 	<!--===================================================-->
 	<!-- END SETTINGS -->
 
-	
+
 	<!--JAVASCRIPT-->
 	<!--=================================================-->
 
@@ -1015,7 +1024,7 @@
 <!--	<script src="plugins/fast-click/fastclick.min.js"></script>-->
 	<script src="<?php echo base_url('assets/plugins/fast-click/fastclick.min.js'); ?>"></script>
 
-	
+
 	<!--Nifty Admin [ RECOMMENDED ]-->
 <!--	<script src="js/nifty.min.js"></script>-->
 	<script src="<?php echo base_url('assets/js/nifty.min.js'); ?>"></script>
@@ -1029,7 +1038,7 @@
 
 
 	<!--Sparkline [ OPTIONAL ]-->
-	
+
 <!--	<script src="plugins/sparkline/jquery.sparkline.min.js"></script>-->
 
 	<script src="<?php echo base_url('assets/plugins/sparkline/jquery.sparkline.min.js'); ?>"></script>
@@ -1058,7 +1067,7 @@
 <!--	<script src="js/demo/dashboard.js"></script>-->
 	<script src="<?php echo base_url('assets/js/demo/dashboard.js'); ?>"></script>
 
-	
+
 	<!--
 
 	REQUIRED
@@ -1080,7 +1089,7 @@
 	Detailed information and more samples can be found in the document.
 
 	-->
-		
+
 
 
 

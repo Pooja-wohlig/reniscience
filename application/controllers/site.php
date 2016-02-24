@@ -816,7 +816,7 @@ $data["alerterror"]="New storyimage could not be created.";
 else
 $data["alertsuccess"]="storyimage created Successfully.";
 $data["redirect"]="site/viewstoryimage?id=".$storyid;
-$this->load->view("redirect",$data);
+$this->load->view("redirect2",$data);
 }
 }
 public function editstoryimage()
@@ -903,7 +903,7 @@ $data["alerterror"]="New storyimage could not be Updated.";
 else
 $data["alertsuccess"]="storyimage Updated Successfully.";
 $data["redirect"]="site/viewstoryimage?id=".$storyid;
-$this->load->view("redirect",$data);
+$this->load->view("redirect2",$data);
 }
 }
 public function deletestoryimage()
@@ -912,7 +912,7 @@ $access=array("1");
 $this->checkaccess($access);
 $this->storyimage_model->delete($this->input->get("id"));
 $data["redirect"]="site/viewstoryimage?id=".$this->input->get("storyid");
-$this->load->view("redirect",$data);
+$this->load->view("redirect2",$data);
 }
 
 
