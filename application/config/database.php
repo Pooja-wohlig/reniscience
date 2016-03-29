@@ -71,12 +71,12 @@ $myserver=$_SERVER['SERVER_NAME'];
 //    $db['default']['stricton'] = FALSE;
 //}
 //else
-{
+//{
     $db['default']['hostname'] = 'localhost';
-    $db['default']['username'] = 'root';
-    $db['default']['password'] = '';
-    $db['default']['database'] = 'reniscience';
-    $db['default']['dbdriver'] = 'mysqli';
+    $db['default']['username'] = 'wohligco_sci';
+    $db['default']['password'] = 'chintan123';
+    $db['default']['database'] = 'wohligco_sci';
+    $db['default']['dbdriver'] = 'mysql';
     $db['default']['dbprefix'] = '';
     $db['default']['pconnect'] = TRUE;
     $db['default']['db_debug'] = TRUE;
@@ -87,7 +87,7 @@ $myserver=$_SERVER['SERVER_NAME'];
     $db['default']['swap_pre'] = '';
     $db['default']['autoinit'] = TRUE;
     $db['default']['stricton'] = FALSE;
-}
+//}
 
 //$db['default']['hostname'] = getconfig("hostname");
 //$db['default']['username'] = getconfig("username");
