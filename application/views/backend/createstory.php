@@ -21,7 +21,8 @@
 						<div class="form-group">
 							<label class="col-sm-2 control-label" for="normal-field">Content</label>
 							<div class="col-sm-4">
-								<textarea row="4" cols="50" id="normal-field" class="form-control" name="content" value='<?php echo set_value(' content ');?>'></textarea>
+<!--								<textarea row="4" cols="50" id="normal-field" class="form-control" name="content" value='<?php echo set_value(' content ');?>'></textarea>-->
+                         <textarea name="content" id="editstory" cols="20" rows="10" class="form-control tinymce"><?php echo set_value(' content ');?></textarea>
 							</div>
 						</div>
 						<div class=" form-group">

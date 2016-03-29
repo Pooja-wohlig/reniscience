@@ -1067,7 +1067,11 @@
 <!--	<script src="js/demo/dashboard.js"></script>-->
 	<script src="<?php echo base_url('assets/js/demo/dashboard.js'); ?>"></script>
 
-
+<script>
+  tinymce.init({
+    selector: '#editstory'
+  });
+  </script>
 	<!--
 
 	REQUIRED

@@ -14,7 +14,8 @@
 			<div class="form-group">
 				<label class="col-sm-2 control-label" for="normal-field">Content</label>
 				<div class="col-sm-4">
-                    <textarea type="text" id="normal-field" class="form-control" name="content" value='<?php echo set_value(' content ',$before->content);?>'><?php echo set_value(' content ',$before->content);?></textarea>
+<!--                    <textarea type="text" id="normal-field" class="form-control" name="content" value='<?php echo set_value(' content ',$before->content);?>'><?php echo set_value(' content ',$before->content);?></textarea>-->
+                      <textarea name="content" id="editstory" cols="20" rows="10" class="form-control tinymce"><?php echo set_value( 'content',$before->content);?></textarea>
 				</div>
 			</div>
 
@@ -65,3 +66,9 @@
 		</form>
 	</div>
 </section>
+<!--
+<script>
+  tinymce.init({
+    selector: '#editstory'
+  });
+  </script>-->
