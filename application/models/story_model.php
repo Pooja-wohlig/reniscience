@@ -3,7 +3,7 @@ if ( !defined( "BASEPATH" ) )
 exit( "No direct script access allowed" );
 class story_model extends CI_Model
 {
-public function create($title,$content,$numberofimage,$image1,$image2,$status,$timestamp,$category)
+public function create($title,$content,$numberofimage,$image1,$image2,$status,$timestamp,$category,$visibility)
 {
 $data=array(
 			"title" => $title,
@@ -12,6 +12,7 @@ $data=array(
 			"image1" => $image1,
 			"image2" => $image2,
 			"status" => $status,
+			"visibility" => $visibility,
 			"timestamp" => NULL
 );
 $query=$this->db->insert( "reniscience_story", $data );
@@ -50,9 +51,9 @@ $this->db->where("id",$id);
 $query=$this->db->get("reniscience_story")->row();
 return $query;
 }
-public function edit($id,$title,$content,$numberofimage,$image1,$image2,$status,$timestamp,$category)
+public function edit($id,$title,$content,$numberofimage,$image1,$image2,$status,$timestamp,$category,$visibility)
 {
-$data=array("title" => $title,"content" => $content,"numberofimage" => $numberofimage,"image1" => $image1,"image2" => $image2,"status" => $status);
+$data=array("title" => $title,"content" => $content,"numberofimage" => $numberofimage,"image1" => $image1,"image2" => $image2,"status" => $status,"visibility" => $visibility);
 $this->db->where( "id", $id );
 $query=$this->db->update( "reniscience_story", $data );
  $querydelete=$this->db->query("DELETE FROM `reniscience_storycategory` WHERE `story`='$id'");
@@ -114,18 +115,14 @@ $query=$this->db->query("SELECT * FROM `reniscience_story`  ORDER BY `id` ASC")-
 
 		return $return;
 	}
-	  public function getcategorybystoryold($id)
+	  public function getvisibilitydropdown()
 	{
-         $return=array();
-		$query=$this->db->query("SELECT `id`,`story`,`category` FROM `reniscience_storycategory`  WHERE `story`='$id'");
-        if($query->num_rows() > 0)
-        {
-            $query=$query->result();
-            foreach($query as $row)
-            {
-                $return[]=$row->category;
-            }
-        }
+         $return=array(
+         ""=> "Choose Visibility",
+         "1"=> "Yes",
+         "2"=> "No"
+         );
+		
          return $return;
 	}
 

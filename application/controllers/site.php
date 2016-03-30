@@ -426,6 +426,7 @@ $data["page"]="createstory";
 	$data[ 'status' ] =$this->user_model->getstatusdropdown();
 	$data[ 'category' ] =$this->category_model->getcategorydropdown();
 	$data[ 'numberofimage' ] =$this->story_model->getnumberofimagedropdown();
+	$data[ 'visibility' ] =$this->story_model->getvisibilitydropdown();
 $data["title"]="Create story";
 $this->load->view("template",$data);
 }
@@ -446,6 +447,7 @@ $data["alerterror"]=validation_errors();
 	$data[ 'status' ] =$this->user_model->getstatusdropdown();
 	$data[ 'numberofimage' ] =$this->story_model->getnumberofimagedropdown();
 	$data[ 'category' ] =$this->category_model->getcategorydropdown();
+    $data[ 'visibility' ] =$this->story_model->getvisibilitydropdown();
 $data["page"]="createstory";
 $data["title"]="Create story";
 $this->load->view("template",$data);
@@ -460,6 +462,7 @@ $image1=$this->input->get_post("image1");
 $image2=$this->input->get_post("image2");
 $status=$this->input->get_post("status");
 $timestamp=$this->input->get_post("timestamp");
+$visibility=$this->input->get_post("visibility");
 	$config['upload_path'] = './uploads/';
 			$config['allowed_types'] = 'gif|jpg|png|jpeg';
 			$this->load->library('upload', $config);
@@ -526,7 +529,7 @@ $timestamp=$this->input->get_post("timestamp");
 
 			}
 
-if($this->story_model->create($title,$content,$numberofimage,$image1,$image2,$status,$timestamp,$category)==0)
+if($this->story_model->create($title,$content,$numberofimage,$image1,$image2,$status,$timestamp,$category,$visibility)==0)
 $data["alerterror"]="New story could not be created.";
 else
 $data["alertsuccess"]="story created Successfully.";
@@ -541,6 +544,7 @@ $this->checkaccess($access);
 $data["page"]="editstory";
 	$data[ 'status' ] =$this->user_model->getstatusdropdown();
 	$data[ 'numberofimage' ] =$this->story_model->getnumberofimagedropdown();
+    $data[ 'visibility' ] =$this->story_model->getvisibilitydropdown();
 	$data[ 'category' ] =$this->category_model->getcategorydropdown();
 	 $data['selectedcategory']=$this->story_model->getcategorybystory($this->input->get_post('id'));
 	$selectedcategory=$data['selectedcategory'];
@@ -566,6 +570,7 @@ if($this->form_validation->run()==FALSE)
 $data["alerterror"]=validation_errors();
 	$data[ 'status' ] =$this->user_model->getstatusdropdown();
 	$data[ 'category' ] =$this->category_model->getcategorydropdown();
+    $data[ 'visibility' ] =$this->story_model->getvisibilitydropdown();
 	 $data['selectedcategory']=$this->story_model->getcategorybystory($this->input->get_post('id'));
 $data["page"]="editstory";
 $data["title"]="Edit story";
@@ -583,6 +588,7 @@ $image1=$this->input->get_post("image1");
 $image2=$this->input->get_post("image2");
 $status=$this->input->get_post("status");
 $timestamp=$this->input->get_post("timestamp");
+$visibility=$this->input->get_post("visibility");
 	$config['upload_path'] = './uploads/';
 			$config['allowed_types'] = 'gif|jpg|png|jpeg';
 			$this->load->library('upload', $config);
@@ -663,7 +669,7 @@ $timestamp=$this->input->get_post("timestamp");
                // print_r($image);
                 $image2=$image2->image2;
             }
-if($this->story_model->edit($id,$title,$content,$numberofimage,$image1,$image2,$status,$timestamp,$category)==0)
+if($this->story_model->edit($id,$title,$content,$numberofimage,$image1,$image2,$status,$timestamp,$category,$visibility)==0)
 $data["alerterror"]="New story could not be Updated.";
 else
 $data["alertsuccess"]="story Updated Successfully.";
