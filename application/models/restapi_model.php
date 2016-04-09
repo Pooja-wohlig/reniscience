@@ -10,7 +10,7 @@ $query['story']=$this->db->query("SELECT `id`,`title`,`content`,`numberofimage`,
 }
 	public function getallstories(){
 	$query=$this->db->query("SELECT `id`,`title`,`content`,`numberofimage`,`image1`,`image2`,`status`,`visibility` FROM `reniscience_story`")->result();
-		
+
 		 foreach($query AS $row)
         {
              $row->images=array();
@@ -26,11 +26,28 @@ $query['story']=$this->db->query("SELECT `id`,`title`,`content`,`numberofimage`,
                         array_push($row->images,$image->image);
                      }
                  }
-				 
+
 			 }
 		 }
 		return $query;
-        
+
+	}
+
+	public function contactSubmit($name, $contact, $email, $enquiry)
+	{
+			$this->db->query("INSERT INTO `contact`(`name`,`contact`,`email`,`enquiry`) VALUE('$name', '$contact','$email','$enquiry')");
+			if(!empty($email))
+			{
+				 $data['name']=$name;
+				 $data['contact']=$contact;
+				 $data['email']=$email;
+				 $data['enquiry']=$enquiry;
+				// $viewcontent = $this->load->view('emailers/contact', $data, true);
+				// $this->menu_model->emailer($viewcontent,'Contact Form Submission','umpire@customcricketcompany.com',$username);
+			}
+			$object = new stdClass();
+			$object->value = true;
+			return $object;
 	}
 
 }

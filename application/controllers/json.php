@@ -1,5 +1,5 @@
 <?php if ( ! defined("BASEPATH")) exit("No direct script access allowed");
-class Json extends CI_Controller 
+class Json extends CI_Controller
 {function getallstory()
 {
 $elements=array();
@@ -140,5 +140,16 @@ $this->load->view("json",$data);
  public function getallstories(){
  $data["message"]=$this->restapi_model->getallstories();
 $this->load->view("json",$data);
+ }
+
+ public function contactSubmit()
+ {
+     $data = json_decode(file_get_contents('php://input'), true);
+     $name = $data['name'];
+     $contact = $data['contact'];
+     $email = $data['email'];
+     $enquiry = $data['enquiry'];
+     $data['message'] = $this->restapi_model->contactSubmit($name, $contact, $email, $enquiry);
+     $this->load->view('json', $data);
  }
 } ?>
