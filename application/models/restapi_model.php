@@ -35,18 +35,29 @@ $query['story']=$this->db->query("SELECT `id`,`title`,`content`,`numberofimage`,
 
 	public function contactSubmit($name, $contact, $email, $enquiry)
 	{
-			$this->db->query("INSERT INTO `contact`(`name`,`contact`,`email`,`enquiry`) VALUE('$name', '$contact','$email','$enquiry')");
+
 			if(!empty($email))
 			{
-				 $data['name']=$name;
-				 $data['contact']=$contact;
-				 $data['email']=$email;
-				 $data['enquiry']=$enquiry;
-				// $viewcontent = $this->load->view('emailers/contact', $data, true);
-				// $this->menu_model->emailer($viewcontent,'Contact Form Submission','umpire@customcricketcompany.com',$username);
-			}
+					$this->db->query("INSERT INTO `contact`(`name`,`contact`,`email`,`enquiry`) VALUE('$name', '$contact','$email','$enquiry')");
+				 $message = "<html><body><div id=':1fn' class='a3s adM' style='overflow: hidden;'>
+ 			  <p style='color:#000;font-family:Roboto;font-size:14px'>Name : $name <br/>
+ 			Phone : $contact <br/>
+ 			Email : $email <br/>
+ 			Enquiry : $enquiry
+ 			  </p>
+
+ 			</div></body></html>";
+
+ 			// $viewcontent = $this->load->view('emailers/forgotpassword', $data, true);
+ 			$this->email_model->emailer($message,'Contact Form Submission',$email,$username);
 			$object = new stdClass();
 			$object->value = true;
+			}
+else
+{
+	$object = new stdClass();
+	$object->value = false;
+}
 			return $object;
 	}
 

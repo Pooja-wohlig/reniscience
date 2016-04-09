@@ -144,11 +144,12 @@ $this->load->view("json",$data);
 
  public function contactSubmit()
  {
-     $data = json_decode(file_get_contents('php://input'), true);
-     $name = $data['name'];
-     $contact = $data['contact'];
-     $email = $data['email'];
-     $enquiry = $data['enquiry'];
+     //$data = json_decode(file_get_contents('php://input'), true);
+
+     $name = $this->input->post('name');
+     $contact = $this->input->post('contact');
+     $email = $this->input->post('email');
+     $enquiry = $this->input->post('enquiry');
      $data['message'] = $this->restapi_model->contactSubmit($name, $contact, $email, $enquiry);
      $this->load->view('json', $data);
  }
