@@ -35,8 +35,8 @@ $query['story']=$this->db->query("SELECT `id`,`title`,`content`,`numberofimage`,
 
 	public function contactSubmit($name, $contact, $email, $enquiry)
 	{
-
-			// if(!empty($email) && !empty($enquiry))
+		// echo"before";
+		// echo $email;
 			if(!empty($email))
 			{
 					$this->db->query("INSERT INTO `contact`(`name`,`contact`,`email`,`enquiry`) VALUE('$name', '$contact','$email','$enquiry')");
@@ -48,10 +48,9 @@ $query['story']=$this->db->query("SELECT `id`,`title`,`content`,`numberofimage`,
  			  </p>
 
  			</div></body></html>";
-
+// echo"test";
  			// $viewcontent = $this->load->view('emailers/forgotpassword', $data, true);
  			$this->email_model->emailer($message,'Contact Form Submission',$email,$username);
-			echo "mail sent to ".$email;
 			$object = new stdClass();
 			$object->value = true;
 			}
