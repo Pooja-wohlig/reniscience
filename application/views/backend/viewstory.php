@@ -1,5 +1,5 @@
 <div id="page-title">
-	<a class="btn btn-primary btn-labeled fa fa-plus margined pull-right" href="<?php echo site_url('site/createstory'); ?>">Create</a>
+	<!-- <a class="btn btn-primary btn-labeled fa fa-plus margined pull-right" href="<?php echo site_url('site/createstory'); ?>">Create</a> -->
 
 	<h1 class="page-header text-overflow">Story Details</h1>
 </div>
@@ -29,10 +29,10 @@
 				<?php $this->chintantable->createpagination();?>
 			</div>
 		</section>
-		
+
 		<script>
 			function drawtable(resultrow) {
-				return "<tr><td>" + resultrow.id + "</td><td>" + resultrow.title + "</td><td>" + resultrow.numberofimage + "</td><td>" + resultrow.image1 + "</td><td>" + resultrow.image2 + "</td><td>" + resultrow.status + "</td><td>" + resultrow.timestamp + "</td><td><a class='btn btn-primary btn-xs' href='<?php echo site_url('site/editstory?id=');?>" + resultrow.id + "'><i class='icon-pencil'></i></a><a class='btn btn-danger btn-xs' href='<?php echo site_url('site/deletestory?id='); ?>" + resultrow.id + "'><i class='icon-trash '></i></a></td></tr>";
+				return "<tr><td>" + resultrow.id + "</td><td>" + resultrow.title + "</td><td>" + resultrow.numberofimage + "</td><td>" + resultrow.image1 + "</td><td>" + resultrow.image2 + "</td><td>" + resultrow.status + "</td><td>" + resultrow.timestamp + "</td><td><a class='btn btn-primary btn-xs' href='<?php echo site_url('site/editstory?id=');?>" + resultrow.id + "'><i class='icon-pencil'></i></a></td></tr>";
 			}
 			generatejquery("<?php echo $base_url;?>");
 		</script>
